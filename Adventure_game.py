@@ -1,7 +1,7 @@
 import time
 import random
 
-#Initialize Variables
+# Initialize Variables
 villains = [
     "Pirate", "Troll", "Bandit", "Warlord",
     "Necromancer", "Sorcerer", "Assassin", "Dragon",
@@ -15,16 +15,19 @@ end = 0
 total_score = 0
 visited = False
 
+
 # This function handles the score if the score is a negative value
 def score_handling():
     global total_score
     if total_score < 0:
         total_score = 0
 
+
 # To pause printing for 2 seconds
 def print_pause(text):
     time.sleep(2)
     print(text)
+
 
 # To get the right choice from the user
 def get_user_choice():
@@ -38,17 +41,20 @@ def get_user_choice():
         except ValueError:
             print("Please choose 1 or 2: ")
 
-#To Display the result
+
+# To Display the result
 def display_result():
     print(f"Turns: {turns}")
     print(f"Score: {total_score}")
 
-#calculate elapsed time
+
+# Calculate elapsed time
 def calculate_elapsed_time():
     global end
     end = time.time()
     elapsed_time = end - start
     print(f"Elapsed Time: {elapsed_time:.2f} seconds")
+
 
 # To restart the game
 def restart():
@@ -65,6 +71,7 @@ def restart():
             calculate_elapsed_time()
             break
 
+
 # Script of Intro
 def intro():
     print_pause("You find yourself standing in an open field, "
@@ -75,6 +82,7 @@ def intro():
     print_pause("To your right is a dark cave.")
     print_pause("In your hand you hold your trusty "
                 "(but not very effective), magic wand.")
+
 
 # What will happen in the house
 def house():
@@ -95,6 +103,7 @@ def house():
                     "you don't seem to have been followed.")
         return field()
 
+
 # What will happen in the cave
 def cave():
     print_pause("You peer cautiously into the cave.")
@@ -108,6 +117,7 @@ def cave():
     print_pause("You walk back out to the field.")
     return field()
 
+
 # What will happen in the field
 def field():
     print_pause("Enter 1 to knock on the door of the house.")
@@ -118,6 +128,7 @@ def field():
         return house()
     elif choice == 2:
         return cave()
+
 
 # What will happen when the user defends
 def defend():
@@ -142,6 +153,7 @@ def defend():
         total_score -= 1
         restart()
 
+
 # Main program
 def main():
     global start
@@ -154,5 +166,6 @@ def main():
     global villain
     villain = random.choice(villains)
     field()
+
 
 main()
